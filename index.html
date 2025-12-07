@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jay Mark Gimarino | Instructional Design Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter (Body) and Lora (Headings - Serif) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Dark Theme & Sophisticated Styling (Based on Reference Site) */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #3b3a37; /* Dark Olive/Khaki Primary Background */
+            color: #fefefe; /* Light Text */
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Lora', serif; /* Serif font for headings */
+            color: #fefefe;
+        }
+        
+        /* New Dark Palette (Muted Gold/Yellow Accent) */
+        .text-accent { color: #fecd44; } /* Gold/Yellow Accent */
+        .bg-accent { background-color: #fecd44; } 
+        .border-accent { border-color: #fecd44; }
+        .bg-card { background-color: #2e2c29; } /* Darker gray/brown for card backgrounds */
+        .text-subtle { color: #b8b8b8; } /* Light gray for subtle text */
+        
+        /* Section Header Styling */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .section-header h2 {
+            font-size: 2.5rem; 
+            font-weight: 700;
+            color: #fefefe;
+            margin-bottom: 0.5rem;
+        }
+        .section-header .divider {
+            width: 60px;
+            height: 3px;
+            background-color: #fecd44;
+            margin: 0 auto;
+        }
+
+        /* Work Card Styling */
+        .work-card {
+            background-color: #2e2c29; 
+            padding: 2.5rem;
+            border-radius: 0.5rem; 
+            border: 1px solid #4a4947; 
+            transition: all 0.3s ease;
+        }
+        .work-card:hover {
+            box-shadow: 0 5px 15px rgba(254, 205, 68, 0.1);
+            border: 1px solid #fecd44; /* Accent border on hover */
+            transform: translateY(-2px);
+        }
+        .skill-chip {
+            display: inline-block;
+            padding: 0.35rem 0.85rem;
+            margin: 0.4rem 0.4rem 0.4rem 0;
+            border-radius: 0.25rem;
+            background-color: #4a4947; /* Dark background for chip */
+            color: #fecd44; /* Accent text for chip */
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        /* --- Hero and Banner Background Styles (FIXED FOR UPLOADED IMAGE PATH) --- */
+        .hero-bg {
+            /* FIXED: Using URL encoding for the uploaded file path to ensure loading reliability */
+            background-image: url('image_80263d.png');
+            background-size: cover;
+            background-position: center 30%; 
+            position: relative;
+            /* Filter applied to darken the image slightly so white text is readable */
+            filter: grayscale(100%) brightness(0.7); 
+            height: auto; 
+        }
+        .hero-overlay {
+            /* Restored overlay to hold text content */
+            background-color: rgba(0, 0, 0, 0.45); 
+            padding: 6rem 0;
+            filter: none;
+            position: relative;
+            /* Ensure the text content is above the filtered background */
+            z-index: 10; 
+        }
+        
+        .contact-bg {
+            background-image: url('https://images.unsplash.com/photo-1542744173-05336fcc7ad4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMDR8MHwxfHx3b3JrJTIwd2l0aCUyMHRlYW18ZW58MHx8fHwxNzAzNDQ1NTczfDA&ixlib=rb-4.0.3&q=80&w=1200');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            min-height: 325px;
+        }
+        .contact-overlay {
+             background-color: rgba(0, 0, 0, 0.6);
+             padding: 3rem 0;
+             height: 100%;
+             width: 100%;
+             position: absolute;
+             top: 0;
+             left: 0;
+        }
+        .artifact-link-card {
+            background-color: #1f1d1b;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #4a4947; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .artifact-link-card:hover {
+            background-color: #3e3c39;
+            border-color: #fecd44;
+        }
+        .artifact-image {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: contain; 
+            border: 1px solid #4a4947;
+            border-radius: 0.25rem;
+        }
+        .testimonial-card {
+            background-color: #2e2c29; 
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #4a4947;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation/Header -->
+    <header class="sticky top-0 z-10 bg-card shadow-lg border-b border-gray-700">
+        <nav class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="#hero" class="text-xl font-extrabold text-white hover:text-accent transition duration-300">JAY MARK GIMARINO</a>
+            <div class="space-x-6 hidden md:flex text-gray-400 text-sm">
+                <a href="#about" class="hover:text-accent font-medium transition duration-300">About</a>
+                <a href="#work" class="hover:text-accent font-medium transition duration-300">Work</a>
+                <a href="#social-proof" class="hover:text-accent font-medium transition duration-300">Testimonials</a>
+                <a href="#skills" class="hover:text-accent font-medium transition duration-300">Skills</a>
+                <a href="#contact" class="hover:text-accent font-medium transition duration-300">Connect</a>
+            </div>
+            <button class="md:hidden p-2 rounded-md text-gray-300 hover:bg-gray-700 transition duration-300">
+                <i data-lucide="menu" class="h-6 w-6"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main class="max-w-4xl mx-auto">
+
+        <!-- 1. HOME/INTRO (Hero Section - NOW USING UPLOADED PHOTO AS BACKGROUND) -->
+        <section id="hero" class="relative hero-bg">
+            <div class="hero-overlay px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl">
+                    <p class="text-lg font-medium text-accent mb-3 uppercase tracking-widest">Instructional Design Portfolio</p>
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white">
+                        Simple. Smart. Human-Centered
+                    </h1>
+                    <p class="text-xl text-subtle mb-10 leading-relaxed">
+                        I'm an Instructional Designer who creates learning experiences that actually <strong>change how people work</strong> — not just what they know. My goal is simple: to make people feel confident, capable, and genuinely empowered.
+                    </p>
+                    
+                    <!-- CTA and Download CV -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contact" class="inline-flex items-center justify-center space-x-3 bg-accent text-gray-900 hover:bg-yellow-500 font-semibold py-3 px-8 rounded-md shadow-lg transition duration-300 uppercase tracking-wider text-sm">
+                            <i data-lucide="briefcase" class="h-4 w-4 fill-current"></i>
+                            <span>Hire Me / Work With Me</span>
+                        </a>
+                        <a href="https://drive.google.com/uc?export=download&id=1qNgScYJHaGl3rbXFTXY6mZZz1K-0DPun" download="Jay_Mark_Gimarino_CV.pdf" class="inline-flex items-center justify-center space-x-3 border border-white text-white hover:border-accent hover:text-accent font-medium py-3 px-8 rounded-md transition duration-300 uppercase tracking-wider text-sm">
+                            <i data-lucide="download" class="h-4 w-4"></i>
+                            <span>Download CV (PDF)</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ABOUT ME (Quantified Summary Added) -->
+        <section id="about" class="py-20 px-4 sm:px-6 lg:px-8">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="space-y-8 max-w-3xl mx-auto text-subtle">
+                <p class="text-lg leading-relaxed border-b border-gray-700 pb-6 mb-6">
+                    I started in operations and training years ago, but what pulled me fully into instructional design was one realization: <strong>Training isn't just information delivery—it's behavior change.</strong> That belief shapes the way I approach every program.
+                </p>
+                
+                <!-- Quantifiable Career Summary -->
+                <div class="bg-card p-6 rounded-md border border-gray-700">
+                    <h3 class="text-xl font-bold text-accent mb-3">Quantifiable Experience Snapshot</h3>
+                    <p class="text-base text-subtle">
+                        I bring <strong>8+ years</strong> of progressive experience in L&D and ID, having managed training programs that scaled <strong>10X</strong> in capacity (Athena Labs LXA Program). I have successfully designed, developed, and deployed <strong>10+ major curricula</strong> for key industries including <strong>US Legal Services, Executive Support, Tech, and BPO.</strong> My programs regularly incorporate <strong>Storyline 360, Vyond, and Canvas LMS</strong> environments to drive measurable performance outcomes.
+                    </p>
+                </div>
+
+                <div class="pt-4">
+                    <h3 class="text-xl font-bold text-white mb-4 border-b border-gray-700 pb-2">My Areas of Specialization:</h3>
+                    <ul class="grid sm:grid-cols-2 gap-4 text-base">
+                        <li class="flex items-start"><i data-lucide="chevrons-right" class="text-accent h-6 w-6 mr-1 mt-0.5"></i> Transforming complex processes into engaging, digestible learning.</li>
+                        <li class="flex items-start"><i data-lucide="chevrons-right" class="text-accent h-6 w-6 mr-1 mt-0.5"></i> Building asynchronous, scalable training systems (LMS architecture).</li>
+                        <li class="flex items-start"><i data-lucide="chevrons-right" class="text-accent h-6 w-6 mr-1 mt-0.5"></i> Designing output-based assessments that measure real competency.</li>
+                        <li class="flex items-start"><i data-lucide="chevrons-right" class="text-accent h-6 w-6 mr-1 mt-0.5"></i> End-to-end ADDIE ownership, from research to evaluation.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 3. FEATURED WORK (Updated structure with 3 projects, new content, and consolidated metrics) -->
+        <section id="work" class="py-20 px-4 sm:px-6 lg:px-8 bg-card">
+            <div class="section-header">
+                <h2>Featured Work</h2>
+                <div class="divider"></div>
+                <p class="text-subtle text-lg mt-4">Selected projects that showcase my Instructional Design capabilities.</p>
+            </div>
+
+            <div class="space-y-12">
+                
+                <!-- FEATURED PROJECT 1: Candidate Training Ecosystem -->
+                <div class="work-card">
+                    <h3 class="text-2xl font-bold text-white mb-1">Candidate Training Ecosystem (v2.5 + Specializations)</h3>
+                    <p class="text-sm font-medium text-accent mb-4 uppercase tracking-wider">Remote Legal Staff | Flagship Project | LMS Architecture | Asynchronous Transformation</p>
+                    
+                    <h4 class="text-lg font-bold text-white mb-1">Role: <span class="font-normal text-subtle">Instructional Designer / Training Manager</span></h4>
+                    <h4 class="text-lg font-bold text-white mb-1">Company: <span class="font-normal text-subtle">Remote Legal Staff (USA)</span></h4>
+                    <h4 class="text-lg font-bold text-white mb-1">Focus: <span class="font-normal text-subtle">Asynchronous Learning, Legal Training, LMS Architecture</span></h4>
+
+                    <h4 class="text-lg font-bold text-white mb-1 mt-6">What I Built:</h4>
+                    <ul class="list-disc list-inside text-subtle ml-4 text-base space-y-1">
+                        <li>Redesigned entire Candidate Training Program into an <strong>80% asynchronous ecosystem.</strong></li>
+                        <li>Developed multi-specialty tracks (PI, Family Law, Estate Law, etc.) with <strong>US–legal workflow simulations.</strong></li>
+                        <li>Designed <strong>output-based assessments, rubrics, and a 17-competency evaluation system.</strong></li>
+                        <li>Built <strong>Capstone Simulations</strong> like Build the Case File and drafting assessments.</li>
+                        <li>Developed Circle LMS workflows, automation, tagging, and <strong>community structure.</strong></li>
+                    </ul>
+                    
+                    <h4 class="text-lg font-bold text-white mb-1 mt-6">Key Results:</h4>
+                    <ul class="list-disc list-inside text-subtle ml-4 text-base space-y-2">
+                        <li>Training became accessible to <strong>3× more candidates.</strong></li>
+                        <li>Higher consistency achieved through <strong>unified rubrics and workflows.</strong></li>
+                        <li>Attorneys reported <strong>improved quality of trainee work.</strong></li>
+                    </ul>
+                    
+                    <!-- ARTIFACT LINK SECTION -->
+                    <h4 class="text-lg font-bold text-white mb-3 mt-6">Key Artifacts:</h4>
+                    <a href="rls_ct_artifacts.html" target="_blank" class="artifact-link-card group">
+                        <i data-lucide="layers-3" class="h-8 w-8 text-accent group-hover:text-white transition duration-300"></i>
+                        <p class="text-base text-white font-semibold mt-3">View All Project Artifacts</p>
+                        <p class="text-xs text-subtle mt-1">Swimlane Diagram, Platform Walkthrough, Storyboard, Scorecard</p>
+                    </a>
+                    <!-- END ARTIFACT LINK SECTION -->
+
+                </div>
+
+                <!-- FEATURED PROJECT 2 (UPDATED CONTENT): Laptop Policy Course -->
+                <div class="work-card">
+                    <h3 class="text-2xl font-bold text-white mb-1">Laptop Policy & Security Course (Microlearning Program)</h3>
+                    <p class="text-sm font-medium text-accent mb-4 uppercase tracking-wider">Athena Labs, LLC (USA) | Compliance | Microlearning</p>
+                    
+                    <h4 class="text-lg font-bold text-white mb-1">Role: <span class="font-normal text-subtle">Instructional Designer / Module Developer</span></h4>
+                    <h4 class="text-lg font-bold text-white mb-1">Company: <span class="font-normal text-subtle">Athena Labs, LLC (USA)</span></h4>
+                    <h4 class="text-lg font-bold text-white mb-1">Focus: <span class="font-normal text-subtle">Policy Simplification, Cybersecurity, Scenario-Based Training</span></h4>
+
+                    <h4 class="text-lg font-bold text-white mb-1 mt-6">What I Built:</h4>
+                    <ul class="list-disc list-inside text-subtle ml-4 text-base space-y-1">
+                        <li>Designed a clear, engaging microlearning course explaining the company's Laptop & Device Security Policy.</li>
+                        <li>Converted dense policy text into <strong>digestible, scenario-based learning.</strong></li>
+                        <li>Added decision-making checkpoints and knowledge checks for clarity and retention.</li>
+                        <li>Developed visuals, diagrams, and simplified explanations to make compliance training human and accessible.</li>
+                        <li>Ensured alignment with IT, Security, and HR requirements while keeping a warm, learner-friendly tone.</li>
+                    </ul>
+                    
+                    <h4 class="text-lg font-bold text-white mb-1 mt-6">Key Results:</h4>
+                    <ul class="list-disc list-inside text-subtle ml-4 text-base space-y-2">
+                        <li>Transformed a previously overwhelming policy into a course employees could actually <strong>understand and follow.</strong></li>
+                        <li><strong>Reduced device compliance errors</strong> through clearer expectations.</li>
+                        <li>Provided a reusable onboarding asset for all new hires.</li>
+                        <li>Showcased my strengths in policy interpretation, simplification, and visual instructional design.</li>
+                    </ul>
+                    
+                    <!-- ARTIFACT LINK SECTION -->
+                    <h4 class="text-lg font-bold text-white mb-3 mt-6">Key Artifacts:</h4>
+                    <a href="laptop_policy_artifacts.html" target="_blank" class="artifact-link-card group">
+                        <i data-lucide="shield-check" class="h-8 w-8 text-accent group-hover:text-white transition duration-300"></i>
+                        <p class="text-base text-white font-semibold mt-3">View E-Learning Artifacts</p>
+                        <p class="text-xs text-subtle mt-1">Design Document, Scenario Samples, Compliance Checklist</p>
+                    </a>
+                    <!-- END ARTIFACT LINK SECTION -->
+                </div>
+                
+                <!-- FEATURED PROJECT 3: Candidate Training V5 Framework (Unchanged) -->
+                <div class="work-card">
+                    <h3 class="text-2xl font-bold text-white mb-1">Candidate Training V5 Framework</h3>
+                    <p class="text-sm font-medium text-accent mb-4 uppercase tracking-wider">Athena Labs | Outcome-Based Learning | Standardization | Certification Design</p>
+                    
+                    <h4 class="text-lg font-bold text-white mb-1">Role: <span class="font-normal text-subtle">Instructional Designer / Systems Developer</span></h4>
+                    <h4 class="text-lg font-bold text-white mb-1">Company: <span class="font-normal text-subtle">Athena Labs, LLC (USA)</span></h4>
+                    <h4 class="text-lg font-bold text-white mb-1">Focus: <span class="font-normal text-subtle">Outcome-Based Learning, Skills Labs, Training Standardization</span></h4>
+
+                    <h4 class="text-lg font-bold text-white mb-1 mt-6">What I Built:</h4>
+                    <ul class="list-disc list-inside text-subtle ml-4 text-base space-y-1">
+                        <li>Created <strong>Skills Lab and Tech Lab modules</strong> simulating real EA tasks.</li>
+                        <li>Converted assessments into <strong>SOP-output formats</strong> aligned with company standards.</li>
+                        <li>Built a <strong>Canvas LMS Style Guide</strong> improving standardization across all trainers.</li>
+                        <li>Developed <strong>tracking systems</strong> for monitoring trainee progress and assessment quality.</li>
+                        <li>Created templates, scripts, and repeatable frameworks for <strong>global delivery.</strong></li>
+                    </ul>
+                    
+                    <h4 class="text-lg font-bold text-white mb-1 mt-6">Key Results:</h4>
+                    <ul class="list-disc list-inside text-subtle ml-4 text-base space-y-2">
+                        <li>Training was successfully scaled across <strong>global learner cohorts.</strong></li>
+                        <li><strong>Higher performance consistency</strong> among trainees.</li>
+                        <li>Stronger alignment between training outputs and <strong>client needs.</strong></li>
+                    </ul>
+                    
+                    <!-- ARTIFACT LINK SECTION (Unchanged) -->
+                    <h4 class="text-lg font-bold text-white mb-3 mt-6">Key Artifacts:</h4>
+                    <a href="v5_framework_artifacts.html" target="_blank" class="artifact-link-card group">
+                        <i data-lucide="bar-chart-2" class="h-8 w-8 text-accent group-hover:text-white transition duration-300"></i>
+                        <p class="text-base text-white font-semibold mt-3">View V5 Framework Artifacts</p>
+                        <p class="text-xs text-subtle mt-1">Skills Lab Design, LMS Style Guide, Assessment Templates, Tracking Blueprint</p>
+                    </a>
+                    <!-- END ARTIFACT LINK SECTION -->
+
+                </div>
+            </div>
+            
+            <!-- === NEW SECTION: OTHER KEY PROJECTS (For ChatGPT Workshop and Leadership) === -->
+            <div class="mt-12 pt-6 border-t border-gray-700">
+                <h3 class="text-2xl font-bold text-white mb-6">Other Key Projects</h3>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Project 4: ChatGPT Workshop for Executive Assistants (DISABLED) -->
+                    <div class="bg-card p-6 rounded-md border border-gray-700">
+                        <h4 class="text-xl font-bold text-white mb-2 flex items-center">
+                            <i data-lucide="zap" class="h-5 w-5 mr-2 text-accent"></i> ChatGPT Workshop for Executive Assistants
+                        </h4>
+                        <p class="text-sm font-medium text-accent mb-4 uppercase tracking-wider">Athena Labs | AI Skills Training</p>
+                        <p class="text-base text-subtle mb-4">
+                            Designed a workshop teaching EAs to use AI strategically in daily workflows (scheduling, communication, research). Focused on <strong>prompting frameworks</strong> and hands-on labs.
+                        </p>
+                        <ul class="list-disc list-inside text-subtle ml-4 text-xs space-y-1 mb-4">
+                            <li>Result: EAs reported <strong>immediate improvements in efficiency.</strong></li>
+                            <li>Result: Adoption of AI tools grew <strong>significantly.</strong></li>
+                        </ul>
+                        <a 
+                            href="chatgpt_workshop_artifacts.html" 
+                            onclick="return false;"
+                            class="text-accent text-sm font-semibold flex items-center opacity-50 cursor-not-allowed"
+                        >
+                            View Detailed Artifacts (Coming soon) <i data-lucide="arrow-right" class="h-4 w-4 ml-1"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Project 5: Leadership Onboarding Program (DISABLED) -->
+                    <div class="bg-card p-6 rounded-md border border-gray-700">
+                        <h4 class="text-xl font-bold text-white mb-2 flex items-center">
+                            <i data-lucide="trending-up" class="h-5 w-5 mr-2 text-accent"></i> Leadership & OD Program Suite
+                        </h4>
+                        <p class="text-sm font-medium text-accent mb-4 uppercase tracking-wider">JP Management & Consultancy | Webinar-Based Learning</p>
+                        <p class="text-base text-subtle mb-4">
+                            Designed and facilitated the "Build Your Edge" webinar series focused on practical leadership, supervisory, and organizational development skills, using case studies and chat-driven engagement.
+                        </p>
+                        <ul class="list-disc list-inside text-subtle ml-4 text-xs space-y-1 mb-4">
+                            <li>Result: High participant satisfaction and strong repeat bookings.</li>
+                            <li>Result: Helped client organizations clarify roles and leadership expectations.</li>
+                        </ul>
+                         <a 
+                             href="leadership_onboarding_artifacts.html" 
+                             onclick="return false;"
+                             class="text-accent text-sm font-semibold flex items-center opacity-50 cursor-not-allowed"
+                         >
+                            View Program Artifacts (Coming soon)<i data-lucide="arrow-right" class="h-4 w-4 ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- === END NEW SECTION === -->
+
+        </section>
+
+        <!-- 3.5. TESTIMONIALS / SOCIAL PROOF (UPDATED) -->
+        <section id="social-proof" class="py-20 px-4 sm:px-6 lg:px-8">
+            <div class="section-header">
+                <h2>What Others Are Saying</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 text-subtle">
+                <!-- Testimonial 1 (New, Specific ID Manager Quote) -->
+                <div class="testimonial-card">
+                    <p class="text-lg mb-4 italic">“Jay’s redesign of Candidate Training V5 set a new standard for our team. The structure, clarity, and outputs improved instantly — it became the backbone of how we evaluate talent.”</p>
+                    <p class="text-sm font-bold text-white">— Freda Veluz, Instructional Design Manager, Athena Labs, LLC</p>
+                </div>
+                <!-- Testimonial 2 (New, Leadership/Influence Quote) -->
+                <div class="testimonial-card">
+                    <p class="text-lg mb-4 italic">"Jay is an incredible leader. He can influence and inspire others to take action. He is also not afraid to take risks. I saw firsthand how he decided to move into instructional design when he found it interesting. Jay is absolutely an asset to any team he is part of."</p>
+                    <p class="text-sm font-bold text-white">— Ron de Vera, Director, Athena Labs, LLC</p>
+                </div>
+                <!-- Testimonial 3 (Updated, Strategic Planning Quote) -->
+                <div class="testimonial-card">
+                    <p class="text-lg mb-4 italic">"His ability to take complex subjects like Strategic Planning and make them accessible and actionable in a virtual environment is unmatched. High engagement every time."</p>
+                    <p class="text-sm font-bold text-white">— Jeffrey Pantaleon, CEO, JP Management & Consultancy</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. MY DESIGN APPROACH (Unchanged) -->
+        <section id="approach" class="py-20 px-4 sm:px-6 lg:px-8 bg-card">
+            <div class="section-header">
+                <h2>My Design Approach</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="p-8 bg-3b3a37 border border-gray-700 rounded-md">
+                <h3 class="text-2xl font-bold text-white mb-6">The ADDIE Method, Humanized</h3>
+                
+                <div class="grid md:grid-cols-5 gap-6 text-center text-subtle">
+                    <!-- Steps of ADDIE -->
+                    <div class="p-4 border-b-2 border-red-500 hover:border-accent transition duration-300">
+                        <i data-lucide="search" class="h-6 w-6 text-red-400 mx-auto mb-1"></i>
+                        <h4 class="font-bold text-white mb-1 text-base">Analysis</h4>
+                        <p class="text-xs">Understand needs, barriers, and workflow realities.</p>
+                    </div>
+                    <div class="p-4 border-b-2 border-yellow-500 hover:border-accent transition duration-300">
+                        <i data-lucide="layout-grid" class="h-6 w-6 text-yellow-400 mx-auto mb-1"></i>
+                        <h4 class="font-bold text-white mb-1 text-base">Design</h4>
+                        <p class="text-xs">Structure for clarity & emotional safety.</p>
+                    </div>
+                    <div class="p-4 border-b-2 border-green-500 hover:border-accent transition duration-300">
+                        <i data-lucide="code" class="h-6 w-6 text-green-400 mx-auto mb-1"></i>
+                        <h4 class="font-bold text-white mb-1 text-base">Development</h4>
+                        <p class="text-xs">Build accessible, clean materials.</p>
+                    </div>
+                    <div class="p-4 border-b-2 border-blue-500 hover:border-accent transition duration-300">
+                        <i data-lucide="users" class="h-6 w-6 text-blue-400 mx-auto mb-1"></i>
+                        <h4 class="font-bold text-white mb-1 text-base">Implementation</h4>
+                        <p class="text-xs">Run pilots, gather feedback, adjust.</p>
+                    </div>
+                    <div class="p-4 border-b-2 border-purple-500 hover:border-accent transition duration-300">
+                        <i data-lucide="bar-chart-2" class="h-6 w-6 text-purple-400 mx-auto mb-1"></i>
+                        <h4 class="font-bold text-white mb-1 text-base">Evaluation</h4>
+                        <p class="text-xs">Refine using data and analytics.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. SKILLS & CAPABILITIES (UPDATED) -->
+        <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8">
+            <div class="section-header">
+                <h2>Skills & Capabilities</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Instructional Design -->
+                <div class="p-6 bg-card border border-gray-700 rounded-md">
+                    <h3 class="text-xl font-bold text-white mb-3 flex items-center"><i data-lucide="book-open" class="h-6 w-6 mr-2 text-accent"></i> Instructional Design</h3>
+                    <div class="flex flex-wrap text-subtle">
+                        <span class="skill-chip">Curriculum mapping</span>
+                        <span class="skill-chip">Scenario-based learning</span>
+                        <span class="skill-chip">Job-task alignment</span>
+                        <span class="skill-chip">Rubric design</span>
+                        <span class="skill-chip">Performance-based assessment</span>
+                        <span class="skill-chip">Simulations & capstones</span>
+                    </div>
+                </div>
+
+                <!-- Training & Facilitation -->
+                <div class="p-6 bg-card border border-gray-700 rounded-md">
+                    <h3 class="text-xl font-bold text-white mb-3 flex items-center"><i data-lucide="graduation-cap" class="h-6 w-6 mr-2 text-accent"></i> Training & Facilitation</h3>
+                    <div class="flex flex-wrap text-subtle">
+                        <span class="skill-chip">Leadership development</span>
+                        <span class="skill-chip">Workshop design</span>
+                        <span class="skill-chip">Virtual facilitation</span>
+                        <span class="skill-chip">Community engagement</span>
+                    </div>
+                </div>
+
+                <!-- Technical Skills & Tools -->
+                <div class="p-6 bg-card border border-gray-700 rounded-md">
+                    <h3 class="text-xl font-bold text-white mb-3 flex items-center"><i data-lucide="wrench" class="h-6 w-6 mr-2 text-accent"></i> Technical Skills & Tools</h3>
+                    <div class="flex flex-wrap text-subtle">
+                        <span class="skill-chip">LMS (Circle, Canvas, WorkRamp)</span>
+                        <span class="skill-chip">Authoring (Storyline, Vyond, Mindsmith)</span>
+                        <span class="skill-chip">Graphic Design (Canva, Photoshop)</span>
+                        <span class="skill-chip">Video Editing (Canva, Sony Vegas)</span>
+                        <span class="skill-chip">Data tools (GSheets, Airtable, Monday.com)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- 6. CONTACT (Full Width Banner with Image) -->
+    <section id="contact" class="relative contact-bg mt-12">
+        <div class="contact-overlay flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-white mb-4">Let's Create Dynamic Learning.</h2>
+            <div class="w-16 h-1 bg-accent mx-auto mb-8 rounded-full"></div>
+
+            <p class="text-xl text-subtle mb-10 max-w-2xl">
+                Ready to elevate your learning strategy? Reach out to discuss your project needs.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-6 max-w-2xl w-full">
+                <a href="mailto:jmarkgimarino@gmail.com" class="p-4 border border-accent rounded-md flex items-center justify-center space-x-3 w-full bg-accent text-gray-900 font-semibold transition duration-300 hover:bg-yellow-500">
+                    <i data-lucide="mail" class="h-5 w-5 fill-current"></i>
+                    <span>Email: jmarkgimarino@gmail.com</span>
+                </a>
+                <a href="https://linkedin.com/in/jmarkgimarino" target="_blank" class="p-4 border border-gray-500 rounded-md flex items-center justify-center space-x-3 w-full text-white font-semibold transition duration-300 hover:border-accent hover:text-accent">
+                    <i data-lucide="linkedin" class="h-5 w-5"></i>
+                    <span>Connect on LinkedIn</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-card text-white py-6">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-xs font-medium text-gray-500">&copy; <span id="year"></span> Jay Mark Gimarino. Instructional Design Portfolio.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set the current year in the footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+
+</body>
+</html>
